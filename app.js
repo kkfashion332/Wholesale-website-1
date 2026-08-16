@@ -1,6 +1,5 @@
-// WARNING: Dhyan rahe, yahan aapko apne PythonAnywhere ka URL dalna hai!
-// Jaise: https://aapka_username.pythonanywhere.com/api/home_data
-const API_URL = "http://127.0.0.1:5000/api/home_data"; // Testing ke liye local, live hone pe change karein.
+// Live PythonAnywhere API URL set kar diya gaya hai
+const API_URL = "https://kasif.pythonanywhere.com/api/home_data";
 
 let currentBannerIndex = 0;
 
@@ -52,9 +51,11 @@ function renderBanners(banners) {
     // Auto Swipe Logic (Every 3 seconds)
     setInterval(() => {
         const slides = document.querySelectorAll('.banner-slide');
-        slides[currentBannerIndex].classList.remove('active');
-        currentBannerIndex = (currentBannerIndex + 1) % slides.length;
-        slides[currentBannerIndex].classList.add('active');
+        if (slides.length > 0) {
+            slides[currentBannerIndex].classList.remove('active');
+            currentBannerIndex = (currentBannerIndex + 1) % slides.length;
+            slides[currentBannerIndex].classList.add('active');
+        }
     }, 3000);
 }
 
